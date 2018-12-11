@@ -1,1 +1,4 @@
 /etc/init.d/ssh stop
+#service ssh stop
+#systemctl stop ssh
+#pkill ssh
