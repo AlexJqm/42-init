@@ -6,5 +6,3 @@ Graphic:
 SSH:
 	- Ouvrir un terminal et ecrire la commande:
 		$ ssh username@localhost
-		$ adduser username
-		$ su username
