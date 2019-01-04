@@ -1,7 +1,9 @@
+#!/bin/bash
+
 CURRENT_DATE=$(date +%d/%m/%Y)
 CURRENT_HOUR=$(date +%Hh%M)
 USERNAME=$(users | cut -d ' ' -f2)
-ADDRIP=$(ipconfig getifaddr en0)
+ADDRIP=$(ifconfig | grep "inet " | cut -d " " -f2 | tail -1)
 PCNAME=$(hostname)
 LOG_GREEN='\033[1;32m'
 LOG_NOCOLOR='\033[0m'
