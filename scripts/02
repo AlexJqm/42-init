@@ -1,2 +1,9 @@
-pkill -u $USER
-userdel -fr $USER
+#!/bin/bash
+
+echo "Entrer le nom d'utilsateur a supprimer:"
+read username
+line=`ps -aux | grep "^$username" | grep 'bash$'`
+pid=`echo "$line" | awk '{print $2}'`
+sudo kill -9 $pid
+echo "Utilisateur supprimer."
+sudo deluser $username
