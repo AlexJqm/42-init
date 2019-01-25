@@ -8,6 +8,7 @@ PCNAME=$(hostname)
 LOG_GREEN='\033[1;32m'
 LOG_NOCOLOR='\033[0m'
 
+@clear
 echo "\n\t––––––––––––––––––––––––––––––––––––––––––––"
 echo "\tTime = $LOG_GREEN$CURRENT_HOUR$LOG_NOCOLOR"
 echo "\tDate = $LOG_GREEN$CURRENT_DATE$LOG_NOCOLOR"
