@@ -1,11 +1,4 @@
-#nslookup 42.fr
-
-Server:		10.51.1.42
-Address:	10.51.1.42#53
-
-Name:	42.fr
-Address: 10.52.1.76
-Name:	42.fr
-Address: 10.52.1.11
-Name:	42.fr
-Address: 10.52.1.12
+# nslookup 42.fr 1.1.1.1 | grep Address | grep -v "#" | awk '{print $2}'
+163.172.250.11
+163.172.250.12
+163.172.250.13
