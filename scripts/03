@@ -1,18 +1,35 @@
-#!/bin/bash
+DATA[0]="      ::::::::::: ::::    ::: ::::::::::: :::::::::::            :::     :::::::: "
+DATA[1]="         :+:     :+:+:   :+:     :+:         :+:               :+:     :+:    :+: "
+DATA[2]="        +:+     :+:+:+  +:+     +:+         +:+              +:+ +:+        +:+   "
+DATA[3]="       +#+     +#+ +:+ +#+     +#+         +#+             +#+  +:+      +#+      "
+DATA[4]="      +#+     +#+  +#+#+#     +#+         +#+            +#+#+#+#+#+  +#+         "
+DATA[5]="     #+#     #+#   #+#+#     #+#         #+#                  #+#   #+#           "
+DATA[6]="########### ###    #### ###########     ###                  ###  ##########      "
+echo
 
-CURRENT_DATE=$(date +%d/%m/%Y)
-CURRENT_HOUR=$(date +%Hh%M)
-USERNAME=$(users | cut -d ' ' -f2)
-ADDRIP=$(ifconfig | grep "inet " | cut -d " " -f2 | tail -1)
-PCNAME=$(hostname)
-LOG_GREEN='\033[1;32m'
-LOG_NOCOLOR='\033[0m'
+OFFSET_X=$(($((`tput cols` - 56)) / 2))
+OFFSET_Y=$(($((`tput lines` - 6)) / 2))
 
-@clear
-echo "\n\t––––––––––––––––––––––––––––––––––––––––––––"
-echo "\tTime = $LOG_GREEN$CURRENT_HOUR$LOG_NOCOLOR"
-echo "\tDate = $LOG_GREEN$CURRENT_DATE$LOG_NOCOLOR"
-echo "\tUsername = $LOG_GREEN$USERNAME$LOG_NOCOLOR"
-echo "\tAddress IP = $LOG_GREEN$ADDRIP$LOG_NOCOLOR"
-echo "\tComputer name = $LOG_GREEN$PCNAME$LOG_NOCOLOR"
-echo "\t––––––––––––––––––––––––––––––––––––––––––––\n"
+draw_char() {
+    V_COORD_X=$1
+    V_COORD_Y=$2
+
+    tput cup $((OFFSET_Y + V_COORD_Y)) $((OFFSET_X + V_COORD_X))
+    printf %c ${DATA[V_COORD_Y]:V_COORD_X:1}
+}
+
+tput civis // Masque le curseur
+clear
+while :; do
+    for ((c=1; c <= 7; c++)); do // Couleur
+        tput setaf $c
+        for ((x=0; x<${#DATA[0]}; x++)); do // Imprime les caracteres
+            for ((y=0; y<=6; y++)); do
+                draw_char $x $y
+            done
+        done
+    done
+    sleep 1
+    clear
+    break
+done
