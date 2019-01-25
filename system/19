@@ -1,1 +1,15 @@
-systemctl list-units --type service --all
+# ls /etc/init.d/ | grep -v ".sh"
+cron
+dbus
+exim4
+fail2ban
+kmod
+netfilter-persistent
+networking
+nginx
+portsentry
+postfix
+procps
+rsyslog
+sudo
+udev
